@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   // entry: es la que decide que se va a colocar en el dist. en app.js por ejemplo se decidira que se va a usar
   // entre css blabla
-  entry: './src/app.js',
+  entry: './src/js/app.js',
   // el output en un solo archivo
   output: {
     filename: 'bundle.js',
@@ -33,7 +33,7 @@ module.exports = {
         use: 'babel-loader'
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|otf)$/,
         use: [
           'file-loader'
         ]
