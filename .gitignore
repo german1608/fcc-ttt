@@ -1,11 +1,10 @@
-# As always.
 node_modules/
-
-# Ignore logs.
-*.log
-
-# Ignore dist, it's just for production purposes
+.sass-cache/
 dist/
-
-# Ignore the template for the webpage
-templates/pomodoro-template.svg
+*.map
+*.log
+*.swp
+coverage/
+TODO.md
+Session.vim
+scratch/

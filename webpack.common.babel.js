@@ -1,9 +1,7 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+import path from 'path'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 
-module.exports = {
-  // entry: es la que decide que se va a colocar en el dist. en app.js por ejemplo se decidira que se va a usar
-  // entre css blabla
+const common = {
   entry: './src/js/app.js',
   // el output en un solo archivo
   output: {
@@ -40,17 +38,11 @@ module.exports = {
       }
     ]
   },
-  devServer: {
-    // The following 2 lines enable to check it via IP
-    host: '0.0.0.0',
-    disableHostCheck: true,
-    contentBase: './dist'
-  },
-  devtool: 'inline-source-map',
-  // plugins para html
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.pug'
     })
   ]
 }
+
+export default common
