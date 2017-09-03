@@ -2,7 +2,7 @@ import path from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 const common = {
-  entry: './src/js/app.js',
+  entry: './src/js/index.js',
   // el output en un solo archivo
   output: {
     filename: 'bundle.js',
