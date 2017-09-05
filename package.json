@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack-dev-server --open --config webpack.dev.babel.js",
     "push": "push-dir --dir=dist --branch=gh-pages --cleanup",
-    "prod": "standard && webpack --config webpack.prod.babel.js"
+    "prod": "standard && webpack --config webpack.prod.babel.js",
+    "lint": "standard"
   },
   "standard": {
     "ignore": [
