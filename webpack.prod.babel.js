@@ -9,6 +9,7 @@ export default merge(common, {
     new UglifyJsPlugin({
       sourceMap: true
     }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
