@@ -12,7 +12,7 @@ const common = {
   module: {
     rules: [
       {
-        test: /\.scss$/,
+        test: /\.(scss|sass)$/,
         use: [{
           loader: 'style-loader' // creates style nodes from JS strings
         }, {
