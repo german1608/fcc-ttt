@@ -11,8 +11,8 @@ render((
   <HashRouter hashType='noslash' >
     <div>
       <Switch>
-        <Route exact path='/' component={MainPage} />
-        <Route exact path='/game' component={GamePage} />
+        <Route path='/game' component={GamePage} />
+        <Route path='/' component={MainPage} />
       </Switch>
     </div>
   </HashRouter>

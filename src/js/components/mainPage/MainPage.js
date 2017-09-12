@@ -1,5 +1,6 @@
 import React from 'react'
-import Button from './Button'
+import ChooseMenu from './ChooseMenu'
+import {Switch, Route} from 'react-router-dom'
 
 class MainPage extends React.Component {
   constructor(props) {
@@ -22,16 +23,18 @@ class MainPage extends React.Component {
         <div className="hero-body main-page">
           <h1 className='has-text-centered'>Tic Tac Toe</h1>
 
-          <div className='menu'>
-            <Button text='1P' onClick={choosePlayer(1).bind(this)}/>
-            <Button text='2P' onClick={choosePlayer(2).bind(this)}/>
-          </div>
+          <Switch>
+            <Route exact path='/' 
+              render={() => <ChooseMenu target={this} choosePlayer={choosePlayer} /> } />
+            <Route exact path='/icon' render={() => <h1>hola</h1> }/>
+          </Switch>
           { /*<h2>{numPlayers === null 
               ? ''
               : numPlayers === 1
               ? 'Next'
               : 'Let\'s play!'
           }</h2> */}
+          {numPlayers}
         </div>
       </div>
     )
