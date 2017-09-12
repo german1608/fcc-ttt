@@ -1,11 +1,22 @@
 // <MainPage />
 .main-page
   flex-direction: column
+  justify-content: space-around
   h1
     font-size: 4rem
 
 .menu
+  flex: 2
+  display: flex
   border: 5px solid white
+  border-radius: 5px
+  padding: 10px
+  button
+    background-color: black
+    color: white
+    border: none
+    flex: 1
+    font-size: 3rem
+    width: 6rem
   +mobile
-    display: flex
     flex-direction: column
