@@ -1,6 +1,7 @@
 import React from 'react'
 import ChooseMenu from './ChooseMenu'
-import {Switch, Route} from 'react-router-dom'
+import IconMenu from './IconMenu'
+import {Switch, Route, Link} from 'react-router-dom'
 
 class MainPage extends React.Component {
   constructor(props) {
@@ -18,6 +19,11 @@ class MainPage extends React.Component {
   }
   render() {
     const {choosePlayer, state: {numPlayers}} = this
+    const path = numPlayers === null 
+      ? '/'
+      : numPlayers === 1
+      ? '/icon'
+      : '/game'
     return (
       <div className='hero is-fullheight'>
         <div className="hero-body main-page">
@@ -28,13 +34,14 @@ class MainPage extends React.Component {
               render={() => <ChooseMenu target={this} choosePlayer={choosePlayer} /> } />
             <Route exact path='/icon' render={() => <h1>hola</h1> }/>
           </Switch>
-          { /*<h2>{numPlayers === null 
+          {numPlayers === null
               ? ''
-              : numPlayers === 1
-              ? 'Next'
-              : 'Let\'s play!'
-          }</h2> */}
-          {numPlayers}
+              : <Link to={path} className='button'>{numPlayers === 1 
+                  ? 'Next'
+                  : 'Let\'s play!'
+              }</Link>
+
+          }
         </div>
       </div>
     )
