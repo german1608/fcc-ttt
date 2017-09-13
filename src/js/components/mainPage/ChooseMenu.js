@@ -1,11 +1,11 @@
 import React from 'react'
 import Button from './Button'
 
-const ChooseMenu = ({choosePlayer, target}) => {
+const ChooseMenu = ({onClick, target}) => {
   return (
     <div className='menu'>
-      <Button text='1P' onClick={choosePlayer(1).bind(target)}/>
-      <Button text='2P' onClick={choosePlayer(2).bind(target)}/>
+      <Button text='1P' onClick={onClick(1).bind(target)}/>
+      <Button text='2P' onClick={onClick(2).bind(target)}/>
     </div>
   )
 }

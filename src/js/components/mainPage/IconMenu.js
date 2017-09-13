@@ -1,7 +1,13 @@
 import React from 'react'
+import Button from './Button'
 
 const IconMenu = (props) => {
-  return <h1>IconMenu</h1>
+  return (
+    <div className="menu Icon">
+      <Button text='×' onClick={() => console.log('hola')} />
+      <Button text={`\u25CB`} onClick={() => console.log('hola')} />
+    </div>
+  )
 }
 
 export default IconMenu

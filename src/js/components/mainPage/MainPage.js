@@ -7,7 +7,13 @@ class MainPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      numPlayers: null
+      numPlayers: null,
+      icon: '×'
+    }
+    this.options = {
+      null: '/',
+      '1': '/icon',
+      '2': '/game'
     }
   }
   choosePlayer(i) {
@@ -17,13 +23,16 @@ class MainPage extends React.Component {
       })
     }
   }
+  chooseIcon(i) {
+    return function (e) {
+      this.setState({
+        icon: i
+      })
+    }
+  }
   render() {
     const {choosePlayer, state: {numPlayers}} = this
-    const path = numPlayers === null 
-      ? '/'
-      : numPlayers === 1
-      ? '/icon'
-      : '/game'
+    const path = this.options[numPlayers]
     return (
       <div className='hero is-fullheight'>
         <div className="hero-body main-page">
@@ -31,16 +40,18 @@ class MainPage extends React.Component {
 
           <Switch>
             <Route exact path='/' 
-              render={() => <ChooseMenu target={this} choosePlayer={choosePlayer} /> } />
-            <Route exact path='/icon' render={() => <h1>hola</h1> }/>
+              render={() => <ChooseMenu target={this} onClick={choosePlayer} /> } />
+            <Route exact path='/icon' 
+              render={() => <IconMenu target={this} chooseIcon={choosePlayer}/> } />
           </Switch>
+
           {numPlayers === null
               ? ''
-              : <Link to={path} className='button'>{numPlayers === 1 
+              : <Link to={path} className='button'>
+                {numPlayers === 1 
                   ? 'Next'
                   : 'Let\'s play!'
               }</Link>
-
           }
         </div>
       </div>
