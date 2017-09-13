@@ -30,8 +30,13 @@ class MainPage extends React.Component {
       })
     }
   }
+  handleBack(e) {
+    this.setState({
+      numPlayers: null
+    })
+  }
   render() {
-    const {choosePlayer, state: {numPlayers}} = this
+    const {choosePlayer, state: {numPlayers}, handleBack} = this
     const path = this.options[numPlayers]
     return (
       <div className='hero is-fullheight'>
@@ -45,17 +50,38 @@ class MainPage extends React.Component {
               render={() => <IconMenu target={this} chooseIcon={choosePlayer}/> } />
           </Switch>
 
-          {numPlayers === null
-              ? ''
-              : <Link to={path} className='button'>
-                {numPlayers === 1 
-                  ? 'Next'
-                  : 'Let\'s play!'
-              }</Link>
-          }
+          <Switch>
+            <Route exact path='/'
+              render={() => {
+                return (
+                  <div>
+                    {numPlayers === null
+                        ? ''
+                        : <Link to={path} className='button'>
+                          {numPlayers === 1 
+                              ? 'Next'
+                              : 'Let\'s play!'
+                          }</Link>
+                    }
+                  </div>
+                )
+              }} />
+            <Route exact path='/icon'
+              render={() => {
+                return (
+                  <div>
+                    <Link to='/' className='button' onClick={handleBack.bind(this)} >
+                      Back
+                    </Link>
+                  </div>
+                )
+              }}
+            />
+          </Switch>
+
         </div>
       </div>
-    )
+      )
   }
 }
 
