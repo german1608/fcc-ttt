@@ -4,11 +4,11 @@ import IconMenu from './IconMenu'
 import {Switch, Route, Link} from 'react-router-dom'
 
 class MainPage extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       numPlayers: null,
-      icon: '×'
+      icon: null
     }
     this.options = {
       null: '/',
@@ -16,38 +16,41 @@ class MainPage extends React.Component {
       '2': '/game'
     }
   }
-  choosePlayer(i) {
+  choosePlayer (i) {
     return function (e) {
       this.setState({
         numPlayers: i
       })
+      console.log(this.state)
     }
   }
-  chooseIcon(i) {
+  chooseIcon (i) {
     return function (e) {
+      console.log(this.state)
       this.setState({
         icon: i
       })
     }
   }
-  handleBack(e) {
+  handleBack (e) {
     this.setState({
-      numPlayers: null
+      numPlayers: null,
+      icon: null
     })
   }
-  render() {
-    const {choosePlayer, state: {numPlayers}, handleBack} = this
+  render () {
+    const {chooseIcon, choosePlayer, state: {numPlayers, icon}, handleBack} = this
     const path = this.options[numPlayers]
     return (
       <div className='hero is-fullheight'>
-        <div className="hero-body main-page">
+        <div className='hero-body main-page'>
           <h1 className='has-text-centered'>Tic Tac Toe</h1>
 
           <Switch>
-            <Route exact path='/' 
-              render={() => <ChooseMenu target={this} onClick={choosePlayer} /> } />
-            <Route exact path='/icon' 
-              render={() => <IconMenu target={this} chooseIcon={choosePlayer}/> } />
+            <Route exact path='/'
+              render={() => <ChooseMenu target={this} onClick={choosePlayer} />} />
+            <Route exact path='/icon'
+              render={() => <IconMenu target={this} onClick={chooseIcon} />} />
           </Switch>
 
           <Switch>
@@ -58,7 +61,7 @@ class MainPage extends React.Component {
                     {numPlayers === null
                         ? ''
                         : <Link to={path} className='button'>
-                          {numPlayers === 1 
+                          {numPlayers === 1
                               ? 'Next'
                               : 'Let\'s play!'
                           }</Link>
@@ -69,10 +72,16 @@ class MainPage extends React.Component {
             <Route exact path='/icon'
               render={() => {
                 return (
-                  <div>
-                    <Link to='/' className='button' onClick={handleBack.bind(this)} >
+                  <div className='flex'>
+                    <Link to='/' className='button' 
+                      onClick={handleBack.bind(this)}
+                      style={{marginRight: icon === null ? '' : '.75rem'}} >
                       Back
                     </Link>
+                    {icon === null
+                        ? ''
+                        : <Link to='/game' className='button' >Play!</Link>
+                    }
                   </div>
                 )
               }}
@@ -81,7 +90,7 @@ class MainPage extends React.Component {
 
         </div>
       </div>
-      )
+    )
   }
 }
 
