@@ -15,22 +15,23 @@ class MainPage extends React.Component {
       '1': '/icon',
       '2': '/game'
     }
+    this.choosePlayer = this.choosePlayer.bind(this)
+    this.chooseIcon = this.chooseIcon.bind(this)
+    this.handleBack = this.handleBack.bind(this)
   }
   choosePlayer (i) {
     return function (e) {
       this.setState({
         numPlayers: i
       })
-      console.log(this.state)
-    }
+    }.bind(this)
   }
   chooseIcon (i) {
     return function (e) {
-      console.log(this.state)
       this.setState({
         icon: i
       })
-    }
+    }.bind(this)
   }
   handleBack (e) {
     this.setState({
@@ -39,20 +40,23 @@ class MainPage extends React.Component {
     })
   }
   render () {
-    const {chooseIcon, choosePlayer, state: {numPlayers, icon}, handleBack} = this
+    const {chooseIcon, choosePlayer, state: {numPlayers, icon}, 
+      handleBack} = this
     const path = this.options[numPlayers]
     return (
       <div className='hero is-fullheight'>
         <div className='hero-body main-page'>
           <h1 className='has-text-centered'>Tic Tac Toe</h1>
 
+          {/* This is to decide what menu to render*/}
           <Switch>
             <Route exact path='/'
-              render={() => <ChooseMenu target={this} onClick={choosePlayer} />} />
+              render={() => <ChooseMenu  onClick={choosePlayer} />} />
             <Route exact path='/icon'
-              render={() => <IconMenu target={this} onClick={chooseIcon} />} />
+              render={() => <IconMenu onClick={chooseIcon} />} />
           </Switch>
 
+          {/* This is to decide what links to render*/}
           <Switch>
             <Route exact path='/'
               render={() => {
@@ -74,8 +78,10 @@ class MainPage extends React.Component {
                 return (
                   <div className='flex'>
                     <Link to='/' className='button' 
-                      onClick={handleBack.bind(this)}
-                      style={{marginRight: icon === null ? '' : '.75rem'}} >
+                      onClick={handleBack}
+                      style={{
+                        marginRight: icon === null ? '' : '.75rem'
+                      }} >
                       Back
                     </Link>
                     {icon === null
