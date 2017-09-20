@@ -41,8 +41,7 @@ class MainPage extends React.Component {
   }
   render () {
     const {chooseIcon, choosePlayer, state: {numPlayers, icon}, 
-      handleBack} = this
-    const path = this.options[numPlayers]
+      handleBack, options: {[numPlayers]: path} } = this
     return (
       <div className='hero is-fullheight'>
         <div className='hero-body main-page'>
