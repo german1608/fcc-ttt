@@ -1,23 +1,23 @@
-import 'react'
+import React from 'react'
 
 const GameBoard = ({board}) => {
   return (
     <table>
       <tbody>
         <tr>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
+          <td>×</td>
+          <td>○</td>
+          <td>×</td>
         </tr>
         <tr>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
+          <td>×</td>
+          <td>○</td>
+          <td>×</td>
         </tr>
         <tr>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
+          <td>×</td>
+          <td>○</td>
+          <td>×</td>
         </tr>
       </tbody>
     </table>
