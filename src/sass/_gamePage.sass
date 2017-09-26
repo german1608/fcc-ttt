@@ -1,8 +1,10 @@
 $box-size: 5rem
-$box-font-size: 3rem
+$box-font-size: 4rem
 .game
+  flex-direction: column
+  justify-content: space-around
   td
-    border: 1px solid red
+    border: 1px solid black
     display: inline-flex
     font-size: $box-font-size
     justify-content: center
@@ -12,3 +14,17 @@ $box-font-size: 3rem
     color: black
     background-color: white
     box-sizing: border-box
+
+.counter-box
+  border: 2px solid white
+  // margin-top: 1rem
+  // margin-bottom: 1rem
+  width: $box-size * 2
+  display: flex
+  flex-direction: column
+  justify-content: space-around
+  align-items: center
+  h1
+    font-size: 1.5rem
+    &:last-child
+      font-size: 2rem
