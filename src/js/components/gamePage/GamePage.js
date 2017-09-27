@@ -8,7 +8,7 @@ class GamePage extends React.Component {
     /* Important chars:
      * \u25B6 ▶
      * \u00D7 ×
-     * \u25CB ○
+     * \u25CB ੦
     */
   }
   render () {
