@@ -2,22 +2,16 @@ import React from 'react'
 
 const GameBoard = ({board}) => {
   const data = {
-    o: <td>੦</td>,
-    x: <td>×</td>,
-    " ": <td></td>
+    o: '੦',
+    x: '×',
+    " ": ' '
   }
-  
-  const Box = ({key, value}) => {
-    console.log(key, value)
-    return <td key={key} >{data[value]}</td>
-  }
-  // Transform the array into 3 rows with the data in each <td></td>
+  // Change each value for a <td></td>
+  const boxes = board.map((box, idx) => <td key={idx} >{data[box]}</td> )
 
-  // Wrap each row in <tr></tr>
-  const boxes = board.map((box, idx) => <Box key={idx} value={box} /> )
-
+  // Group them in 3 arrays of 3 items and wrap each one in <tr></tr>
   const rows = [boxes.slice(0, 3), boxes.slice(3, 6), boxes.slice(6)]
-    .map(row => <tr>{row}</tr>)
+    .map((row, idx) => <tr key={idx} >{row}</tr>)
   return (
     <table>
       <tbody>

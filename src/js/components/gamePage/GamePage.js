@@ -1,15 +1,11 @@
 import React from 'react'
 import GameBoard from './GameBoard'
 import GameCounter from './GameCounter'
+import gameEngine from 'ttt-eng-fcc'
 
 class GamePage extends React.Component {
   constructor(props) {
     super(props)
-    /* Important chars:
-     * \u25B6 ▶
-     * \u00D7 ×
-     * \u25CB ੦
-    */
   }
   render () {
     return (
