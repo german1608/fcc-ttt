@@ -16,7 +16,12 @@ class GamePage extends React.Component {
       <div className='hero is-fullheight'>
         <div className='hero-body game'>
           <GameCounter name='P1' counter={1} />
-          <GameBoard />
+          <GameBoard board={[
+            'x', ' ', ' ',
+            ' ', 'o', ' ',
+            ' ', 'o', 'x'
+          ]}
+          />
           <GameCounter name='P2' counter={1} />
         </div>
       </div>
