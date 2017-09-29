@@ -41,7 +41,11 @@ class MainPage extends React.Component {
   }
   render () {
     const {chooseIcon, choosePlayer, state: {numPlayers, icon}, 
-      handleBack, options: {[numPlayers]: path} } = this
+      handleBack} = this
+    let {options: {[numPlayers]: path}} = this
+    console.log(path)
+    const gameQuery = `?p=${numPlayers}&i=${icon}`
+    console.log(gameQuery)
     return (
       <div className='hero is-fullheight'>
         <div className='hero-body main-page'>
@@ -63,7 +67,7 @@ class MainPage extends React.Component {
                   <div>
                     {numPlayers === null
                         ? ''
-                        : <Link to={path} className='button'>
+                        : <Link to={path + gameQuery} className='button'>
                           {numPlayers === 1
                               ? 'Next'
                               : 'Let\'s play!'
@@ -85,7 +89,7 @@ class MainPage extends React.Component {
                     </Link>
                     {icon === null
                         ? ''
-                        : <Link to='/game' className='button' >Play!</Link>
+                        : <Link to={'/game' + gameQuery} className='button' >Play!</Link>
                     }
                   </div>
                 )
