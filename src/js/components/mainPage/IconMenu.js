@@ -4,8 +4,8 @@ import Button from './Button'
 const IconMenu = ({onClick}) => {
   return (
     <div className='menu Icon'>
-      <Button text='×' onClick={onClick('×')} />
-      <Button text={`\u25CB`} onClick={onClick(`\u25CB`)} />
+      <Button text='×' onClick={onClick('x')} />
+      <Button text={`\u25CB`} onClick={onClick(`o`)} />
     </div>
   )
 }
