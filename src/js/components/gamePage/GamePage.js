@@ -3,26 +3,25 @@ import GameBoard from './GameBoard'
 import GameCounter from './GameCounter'
 import gameEngine from 'ttt-eng-fcc'
 
-function getParameterByName(name, url) {
+function getParameterByName (name, url) {
   if (!url) url = window.location.href
-  name = name.replace(/[\[\]]/g, "\\$&");
-  const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-    results = regex.exec(url)
-  if (!results) return null;
-  if (!results[2]) return '';
-  return decodeURIComponent(results[2].replace(/\+/g, " "));
+  name = name.replace(/[\[\]]/g, '\\$&')
+  const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)')
+  const results = regex.exec(url)
+  if (!results) return null
+  if (!results[2]) return ''
+  return decodeURIComponent(results[2].replace(/\+/g, ' '))
 }
 
 class GamePage extends React.Component {
-  constructor(props) {
+  constructor (props) {
     /**
      * Explanation of each attribute:
-     * - p1Icon, p2Icon: Icon for p1 and p2. 
+     * - p1Icon, p2Icon: Icon for p1 and p2.
      *   When it's a singlePlayer game, p2 = cpu
      * - singlePlayer: True when the game is for 1 person
+     */
 
-    */
-    
     super(props)
     this.state = {
       board: [
@@ -38,7 +37,8 @@ class GamePage extends React.Component {
     this.boxClick = this.boxClick.bind(this)
     console.log(this.currentPlayer)
   }
-  boxClick(i) {
+
+  boxClick (i) {
     return () => {
       console.log(i)
       if (this.state.board[i] !== ' ') return
